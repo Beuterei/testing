@@ -30,20 +30,16 @@ jobs:
         uses: actions/cache@v4
         with:
           path: dist
-          key: build-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            build-${{ runner.os }}-
+          key: build-${{ runner.os }}-${{ github.sha }}
       - name: Build
         if: steps.restore-build-cache.outputs.cache-hit != 'true'
         run: npm run build
-      - name: Cache build
+      - name: Cache build output
         if: steps.restore-build-cache.outputs.cache-hit != 'true'
         uses: actions/cache@v4
         with:
           path: dist
-          key: build-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            build-${{ runner.os }}-
+          key: build-${{ runner.os }}-${{ github.sha }}
 
   test:
     runs-on: ubuntu-latest
@@ -61,9 +57,7 @@ jobs:
       - uses: actions/cache/restore@v4
         with:
           path: dist
-          key: build-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            build-${{ runner.os }}-
+          key: build-${{ runner.os }}-${{ github.sha }}
       - name: Deploy
         uses: Beuterei/reusable-workflows/.github/actions/upload-to-s3@main
         with:
