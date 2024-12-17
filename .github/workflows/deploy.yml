@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  call-deploy:
+  deploy:
     uses: Beuterei/reusable-workflows/.github/workflows/deploy-static-app.yml@main
     with:
       bucket_name: test-static-fes
