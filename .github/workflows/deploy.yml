@@ -24,6 +24,7 @@ jobs:
     needs: setup
     steps:
       - uses: actions/checkout@v4
+      - uses: Beuterei/reusable-workflows/.github/actions/restore-dependency-cache@main
       - name: Build
         run: npm run build
       - name: Cache build
@@ -39,6 +40,7 @@ jobs:
     needs: setup
     steps:
       - uses: actions/checkout@v4
+      - uses: Beuterei/reusable-workflows/.github/actions/restore-dependency-cache@main
       - name: Testing
         uses: Beuterei/reusable-workflows/.github/actions/node-qa-testing@main
 
@@ -53,9 +55,10 @@ jobs:
           restore-keys: |
             build-${{ runner.os }}-
       - name: Deploy
-        uses: Beuterei/reusable-workflows/.github/actions/deploy-s3@main
+        uses: Beuterei/reusable-workflows/.github/actions/upload-to-s3@main
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           s3_bucket: ${{ inputs.s3_bucket }}
           endpoint_url: ${{ inputs.endpoint_url }}
+          path_to_upload: dist
