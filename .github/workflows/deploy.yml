@@ -65,4 +65,4 @@ jobs:
           secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           bucket_name: ${{ inputs.s3_bucket }}
           endpoint: ${{ inputs.endpoint_url }}
-          source_path: dist
+          source_path: dist/
