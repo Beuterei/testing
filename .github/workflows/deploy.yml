@@ -61,8 +61,8 @@ jobs:
       - name: Deploy
         uses: Beuterei/reusable-workflows/.github/actions/upload-to-s3@main
         with:
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          s3_bucket: ${{ inputs.s3_bucket }}
-          endpoint_url: ${{ inputs.endpoint_url }}
-          path_to_upload: dist
+          access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          bucket_name: ${{ inputs.s3_bucket }}
+          endpoint: ${{ inputs.endpoint_url }}
+          source_path: dist
