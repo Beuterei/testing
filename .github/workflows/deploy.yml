@@ -20,12 +20,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Testing
         uses: Beuterei/reusable-workflows/.github/actions/node-qa-testing@main
 
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Deploy
         uses: Beuterei/reusable-workflows/.github/actions/deploy-s3@main
         with:
