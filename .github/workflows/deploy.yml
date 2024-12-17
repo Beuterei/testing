@@ -1,0 +1,35 @@
+name: Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      aws_access_key_id:
+        required: true
+        description: 'AWS Access Key ID'
+      aws_secret_access_key:
+        required: true
+        description: 'AWS Secret Access Key'
+      s3_bucket:
+        required: true
+        description: 'S3 Bucket name'
+      endpoint_url:
+        required: true
+        description: 'Endpoint URL'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing
+        uses: Beuterei/reusable-workflows/.github/actions/node-qa-testing@main
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        uses: Beuterei/reusable-workflows/.github/actions/deploy-s3@main
+        with:
+          aws_access_key_id: ${{ inputs.aws_access_key_id }}
+          aws_secret_access_key: ${{ inputs.aws_secret_access_key }}
+          s3_bucket: ${{ inputs.s3_bucket }}
+          endpoint_url: ${{ inputs.endpoint_url }}
