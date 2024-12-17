@@ -1,4 +1,4 @@
-name: Build and Deploy a static app
+name: QA
 
 on:
   pull_request:
@@ -19,6 +19,14 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     needs: setup
+    permissions:
+      # Default permissions (matching what would be set if the permissions section was missing at all)
+      contents: read
+      packages: read
+
+      # Need to add these 2 for eslint-annotate-action
+      pull-requests: read
+      checks: write
     steps:
       - uses: actions/checkout@v4
         with:
