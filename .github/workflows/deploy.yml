@@ -10,8 +10,5 @@ jobs:
   deploy:
     uses: Beuterei/reusable-workflows/.github/workflows/deploy-static-app.yml@main
     with:
-      bucket_name: test-static-fes
-      endpoint: nbg1.your-objectstorage.com
-    secrets:
-      ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      SECRET_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      project_name: testingsadsdasd
+    secrets: inherit
