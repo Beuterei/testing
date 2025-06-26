@@ -10,8 +10,7 @@ jobs:
   deploy:
     uses: Beuterei/reusable-workflows/.github/workflows/deploy-static-app.yml@main
     with:
-      bucket_name: test-static-fes
-      endpoint: nbg1.your-objectstorage.com
+      project_name: testingsadsdasd
     secrets:
-      ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      SECRET_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
