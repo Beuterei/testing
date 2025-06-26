@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -35,10 +35,3 @@ function App() {
 }
 
 export default App
-
-function ExampleComponent() {
-  if (true) {
-    const [state, setState] = React.useState(0); // This breaks the rules of hooks
-  }
-  return <div>{state}</div>;
-}
